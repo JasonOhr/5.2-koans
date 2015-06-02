@@ -29,7 +29,7 @@ gulp.task('templates', function(){
     .pipe($.wrap('Handlebars.template(<%= contents %>)'))
     .pipe($.declare({
       namespace: 'JST',
-      noRedeclare: true, // Avoid duplicate declarations
+      noRedeclare: true // Avoid duplicate declarations
     }))
     .pipe($.concat('templates.js'))
     .pipe(gulp.dest('dist/scripts/'))
@@ -48,11 +48,12 @@ gulp.task('serve', ['templates', 'styles'], function () {
   // watch for changes
   gulp.watch([
     '*.html',
-    'scripts/**/*.js'
+    'scripts/**/*.js',
+      'javascript-koans-master/koans/*.js'
   ]).on('change', reload);
 
-  gulp.watch('styles/**/*.scss', ['styles']);
-  gulp.watch('templates/**/*.hbs', ['templates']);
+  //gulp.watch('styles/**/*.scss', ['styles']);
+  //gulp.watch('templates/**/*.hbs', ['templates']);
 });
 
 gulp.task('default', ['serve'], function (){});
